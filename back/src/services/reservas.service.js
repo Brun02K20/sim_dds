@@ -26,21 +26,21 @@ const getAll = async () => {
 
 const create = async (reserva) => {
     const resultado = await sequelize.models
-    .Reservas.create({
-        Dni: reserva.Dni,
-        FechaIngreso: reserva.FechaIngreso,
-        FechaSalida: reserva.FechaSalida,
-        TipoEstadia: reserva.TipoEstadia,
-        Huespedes: reserva.Huespedes
-    })
-    
+        .Reservas.create({
+            Dni: reserva.Dni,
+            FechaIngreso: reserva.FechaIngreso,
+            FechaSalida: reserva.FechaSalida,
+            TipoEstadia: reserva.TipoEstadia,
+            Huespedes: reserva.Huespedes
+        })
+
     return {
         Id: resultado.dataValues.Id,
     };
 
 }
 
-export default  {
+export default {
     getAll,
     create,
 }

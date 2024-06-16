@@ -1,22 +1,22 @@
-const URL = 'http://localhost:3001/reservas'
+import axios from "axios";
+import { URL } from "../constants/constants";
 
-async function getReservas(){
-    const res = await fetch(URL)
-    const data = await res.json()
-    return data;
+async function getReservas() {
+    try {
+        const response = await axios.get(URL)
+        return response.data
+    } catch (error) {
+        return error.response.data
+    }
 }
 
-async function saveReserva(reserva){
-  
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(reserva)
-    };
-
-    const res = await fetch(URL, requestOptions)
-    const data = await res.json()
-    return data
+async function saveReserva(reserva) {
+    try {
+        const response = await axios.post(URL, reserva)
+        return response.data
+    } catch (error) {
+        return error.response.data
+    }
 }
 
-export default {getReservas, saveReserva}
+export default { getReservas, saveReserva }
